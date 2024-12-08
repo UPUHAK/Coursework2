@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.skypro.Coursework2.service.ExaminerService;
-import ru.skypro.Coursework2.service.Question;
+import ru.skypro.Coursework2.model.Question;
 
-import java.awt.*;
 import java.util.Collection;
 
 @RestController
@@ -22,7 +21,7 @@ public class ExamController {
 
     @GetMapping("get/{amount}")
     public Collection<Question> getQuestions(@PathVariable int amount) {
-        return null;
+        return examinerService.getQuestions(amount);
     }
 
 }

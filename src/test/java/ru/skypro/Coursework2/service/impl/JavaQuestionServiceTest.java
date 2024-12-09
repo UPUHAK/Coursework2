@@ -31,7 +31,22 @@ class JavaQuestionServiceTest {
         Assertions.assertEquals(expectedQuestion, actualQuestion);
     }
 
-     @Test
+    @Test
+    void shouldNotAddSameQuestions() {
+
+        Question question1 = new Question("TestQ1", "TestA1");
+        Question question2 = new Question("TestQ1", "TestA1");
+
+        questionService.add(question1);
+        questionService.add(question2);
+
+        Set<Question> allQuestions = new HashSet<>(questionService.getAllQuestions());
+
+        Assertions.assertEquals(1, allQuestions.size());
+        Assertions.assertTrue(allQuestions.contains(question1));
+    }
+
+    @Test
     void shouldCorrectlyRemoveQuestions() {
 
         Question expectedQuestion = questionService.add("TestQ2", "TestA2");
